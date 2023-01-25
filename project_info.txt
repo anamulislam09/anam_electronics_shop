@@ -1,0 +1,107 @@
+<--------------------anam_electronics_shop---------------------->
+			DAY1
+1.Create Project:- composer create-project laravel/laravel anam_electronics_shop
+2.Use Laravel Composer:- composer require laravel/breeze --dev
+3.Install breeze:- php artisan breeze:install --dark
+4.php artisan migrate
+5.npm install
+6.Create Database and connect to .env file
+7.npm run dev
+8.install the package using composer:-install the package using composer:
+9.Publish the configuration file:-php artisan vendor:publish --tag="laratrust"
+10.Run the setup command:php artisan laratrust:setup
+11.Dump the autoloader:-composer dump-autoload
+12.Run the migrations:-php artisan migrate
+13.Go to template.blade.php and create lot`s of menu
+14.Go to web.php and creating route
+
+			and so one
+			DAY2
+#created table that i have needed
+
+1.Category Table:-
+Id
+Category Name (string)
+Sub Category Count (Int)
+Category Product Count (Int)
+Slug (String)
+
+2.SubCategory:-
+Id
+Sub Category Count (int)
+Category Id
+Category Name
+Sub Category Product Count (int)
+Slug (string)
+
+3.Products:-
+Product Name
+Product Short Description
+Product Long Description
+Product Price
+Product Category Name
+Product Sub Category Name
+Product Count
+Product Img
+Product Slug
+
+4.Orders
+Id
+Product Name
+Product Id
+Product Price
+Product Quantity
+Product Total Price
+Order Status
+Order Submission Date
+
+##Add Category form and category table
+##Add Product form and Product table
+##Add SubCategory form and Subcategory table
+##Add Orders form and Orders table
+
+5.Create Category Model with migration:php artisan make:model Category -m
+6.Go to Category Table and create table field.
+7.Go to Category model and create filable that`s why putting this code:-
+		 protected $fillable = [
+       			 'category_name',
+       			 'slug'
+   			 ];
+
+8.Create table in database:-php artisan migrate
+9.Create SubCategory Model with migration:php artisan make:model Subcategory -m
+10.Go to Category Table and create table field.
+11.Go to SubCategory model and create filable that`s why putting this code:-
+		 protected $fillable = [
+       			 'subcategory_name',
+			 'category_id',
+			 'category_name',
+       			 'slug'
+   			 ];
+12.Create table in database:-php artisan migrate
+13.Create Product Model with migration:php artisan make:model Product -m
+14.Go to Category Table and create table field.
+15.Go to SubCategory model and create filable that`s why putting this code:-
+	 protected $fillable = [
+       		 'product_name',
+       		 'product_short_des',
+       		 'product_long_des',
+        	 'price',
+       		 'product_category_name',
+        	 'product_subcategory_name',
+        	 'product_category_id',
+        	 'product_subcategory_id',
+       		 'product_img',
+        	 'slug'
+   		 ];
+12.Create table in database:-php artisan migrate
+
+
+
+
+
+
+
+
+
+
