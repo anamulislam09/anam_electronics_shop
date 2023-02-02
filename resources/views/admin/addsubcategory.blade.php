@@ -8,6 +8,12 @@
   <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Category/</span> Add SubCategory</h4>
 
+    @if (session()->has('msg'))
+      <div class="alert alert-success">
+        {{ session()->get('msg') }}
+      </div>
+    @endif
+
     <div class="col-xxl">
       <div class="card mb-4">
         <div class="card-header d-flex align-items-center justify-content-between">
@@ -15,7 +21,8 @@
           <small class="text-muted float-end">Default label</small>
         </div>
         <div class="card-body">
-          <form action="" method="post">
+          <form action="{{ route('storesubcategory') }}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="row mb-3">
               <label class="col-sm-2 col-form-label" for="basic-default-name">SubCategory Name</label>
               <div class="col-sm-10">
@@ -27,9 +34,11 @@
             <div class="row mb-3">
               <label class="col-sm-2 col-form-label" for="basic-default-name">Selece Category</label>
               <div class="col-sm-10">
-                <select name="category" class="form-select" id="category">
+                <select name="category_id" class="form-select" id="category">
                   <option value="" selected disabled>Select once</option>
-                  <option value="">Electronics</option>
+                  @foreach ($cats as $cat)
+                    <option value="{{ $cat->id }}">{{ $cat->category_name }}</option>
+                  @endforeach
                 </select>
               </div>
             </div>

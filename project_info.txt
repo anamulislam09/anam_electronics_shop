@@ -97,11 +97,40 @@ Order Submission Date
 12.Create table in database:-php artisan migrate
 
 
+			Day-3
+1.Go to addcategory.php file and create action.
+2.Go to web.php and create route:- Route::post('/admin/store-category',StoreCategory')->name('storecategory')
+3.Go to CategoryController.php and create storecategory method
+
+			Day-4
+
+1.Show Category
+2.Category Edit
+3.Go to web.php and create edit route:- Route::get('/admin/edit-category', 'EditCategory')->name('editcategory');
+4.Go to CategoryController and create method for show editCategory.php file. 
+5.create route for update category :- Route::post('/admin/update-category', 'updateCategory')->name('updatecategory');
+6.Go to CategoryController and create method for update category. 
 
 
+		Day-5
+
+1.show category and subcategory for create product
+2.When a category is selected, the subcategories under that category will be displayed.
+USING ASEX	
+
+3.
+
+		Day-6
+
+1.
 
 
+		Day-7
 
-
-
+1.add front template
+2.Create controller for frontend:- php artisan make:controller HomeController
+3.Go to web.php and create route group controller
+4.Create parent template
+5.Create Client controller:-php artisan make:controller frontend/ClientController
+6.Create controller route group and multiple route:-
 

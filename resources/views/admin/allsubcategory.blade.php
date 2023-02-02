@@ -10,6 +10,13 @@
     <!-- Bootstrap Table with Header - Light -->
     <div class="card">
       <h5 class="card-header">Available SubCategory Information</h5>
+
+      @if (session()->has('msg'))
+        <div class="alert alert-success">
+          {{ session()->get('msg') }}
+        </div>
+      @endif
+
       <div class="table-responsive text-nowrap">
         <table class="table">
           <thead class="table-light">
@@ -22,16 +29,21 @@
             </tr>
           </thead>
           <tbody class="table-border-bottom-0">
-            <tr>
-              <td>1</td>
-              <td>Fan</td>
-              <td>Electronics</td>
-              <td>100</td>
-              <td>
-                <a href="" class="btn btn-primary">Edit</a>
-                <a href="" class="btn btn-danger">Delete</a>
-              </td>
-            </tr>
+
+            @foreach ($cats as $index => $cat)
+              <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ $cat->subcategory_name }}</td>
+                <td>{{ $cat->category_name }}</td>
+                <td>{{ $cat->product_count }}</td>
+
+                <td>
+                  <a href="{{ route('editsubcat', $cat->id) }}" class="btn btn-primary">Edit</a>
+                  <a href="{{ route('deletesubcategory', $cat->id) }}" class="btn btn-danger">Delete</a>
+                </td>
+              </tr>
+            @endforeach
+
           </tbody>
         </table>
       </div>
