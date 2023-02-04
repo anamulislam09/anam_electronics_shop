@@ -41,10 +41,11 @@ Route::controller(ClientController::class)->group(function () {
     Route::get('/customer-service', 'CustomerService')->name('customerservice');
 });
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
+Route::middleware(['auth', 'role:user'])->group(function () {
 
     Route::controller(ClientController::class)->group(function () {
         Route::get('/add-to-cart', 'AddToCart')->name('addtocart');
+        Route::post('/addproduct-to-cart/{id}', 'AddProductToCart')->name('addproducttocart');
         Route::get('/checkout', 'Checkout')->name('checkout');
         Route::get('/user-profile', 'UserProfile')->name('userprofile');
         Route::get('/user-profile/pending-orders', 'PendingOrders')->name('pendingorders');
@@ -55,9 +56,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'role:admin'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('admin.layouts.dashboard');
+})->middleware(['auth', 'role:admin'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

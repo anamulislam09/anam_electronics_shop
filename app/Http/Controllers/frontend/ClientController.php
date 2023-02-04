@@ -29,6 +29,14 @@ class ClientController extends Controller
     {
         return view('user_temp.addtocart');
     }
+
+    public function AddProductToCart()
+    {
+        // return view('user_temp.addtocart');
+        echo 'hello';
+    }
+
+
     public function Checkout()
     {
         return view('user_temp.checkout');
