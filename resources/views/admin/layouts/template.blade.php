@@ -197,15 +197,7 @@
                   aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
               </li>
 
-              <form method="POST" action="{{ route('logout') }}">
-                @csrf
 
-                <x-dropdown-link :href="route('logout')"
-                  onclick="event.preventDefault();
-                                      this.closest('form').submit();">
-                  {{ __('Log Out') }}
-                </x-dropdown-link>
-              </form>
 
               <!-- User -->
               <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -214,7 +206,7 @@
                     <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                   </div>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end">
+                {{-- <ul class="dropdown-menu dropdown-menu-end">
                   <li>
                     <a class="dropdown-item" href="#">
                       <div class="d-flex">
@@ -258,13 +250,24 @@
                     <div class="dropdown-divider"></div>
                   </li>
                   <li>
-                    {{-- <a class="dropdown-item" href="auth-login-basic.html">
-                        <i class="bx bx-power-off me-2"></i>
-                        <span class="align-middle">Log Out</span>
-                      </a> --}}
+
+
+                    <a class="dropdown-item" href="auth-login-basic.html">
+                      <i class="bx bx-power-off me-2"></i>
+                      <span class="align-middle">Log Out</span>
+                    </a>
 
                   </li>
-                </ul>
+                </ul> --}}
+                <form method="POST" action="{{ route('logout') }}">
+                  @csrf
+
+                  <x-dropdown-link :href="route('logout')"
+                    onclick="event.preventDefault();
+                     this.closest('form').submit();">
+                    {{ __('Log Out') }}
+                  </x-dropdown-link>
+                </form>
               </li>
               <!--/ User -->
             </ul>

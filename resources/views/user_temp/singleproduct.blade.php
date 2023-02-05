@@ -27,12 +27,15 @@
             </ul>
 
             <div class="btn_main">
-              <form action="{{ route('addproducttocart', $product->id) }}" method="POST">
+              <form action="{{ route('addproducttocart') }}" method="POST">
+                @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                 <div class="form-group">
-                  <label for="product_quantity">How many Pics?</label>
-                  <input type="number" class="form-control" value="1" name="product_quantity" min="1"
+                  <input type="hidden" name="product_id" value="{{ $product->id }}">
+                  <label for="quantity">How many Pics?</label>
+                  <input type="number" class="form-control" placeholder="1" min="1" name="quantity"
                     id="">
+                  <input type="hidden" name="price" value="{{ $product->price }}">
                 </div>
 
                 <input class="btn btn-primary text-right text-white" type="submit" value="Add to cart">
@@ -57,7 +60,14 @@
                 <p class="price_text">Price <span style="color: #262626;">$ {{ $product->price }}</span></p>
                 <div class="tshirt_img"><img src="{{ asset($product->product_img) }}"></div>
                 <div class="btn_main">
-                  <div class="buy_bt"><a href="#">Buy Now</a></div>
+                  <form action="{{ route('addproducttocart') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <input type="hidden" name="price" value="{{ $product->price }}">
+                    <input type="hidden" name="quantity" value="1">
+
+                    <input class="btn btn-primary text-right text-white" type="submit" value="Buy Now">
+                  </form>
                   <div class="seemore_bt">
                     <a href="{{ route('singleproduct', [$product->id, $product->slug]) }}">See More</a>
                   </div>

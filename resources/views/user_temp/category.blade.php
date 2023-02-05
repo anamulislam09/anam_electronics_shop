@@ -13,7 +13,14 @@
                 <p class="price_text">Price <span style="color: #262626;">$ {{ $product->price }}</span></p>
                 <div class="tshirt_img"><img src="{{ asset($product->product_img) }}"></div>
                 <div class="btn_main">
-                  <div class="buy_bt"><a href="#">Buy Now</a></div>
+                  <form action="{{ route('addproducttocart') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <input type="hidden" name="price" value="{{ $product->price }}">
+                    <input type="hidden" name="quantity" value="1">
+
+                    <input class="btn btn-primary text-right text-white" type="submit" value="Buy Now">
+                  </form>
                   <div class="seemore_bt"><a href="{{ route('singleproduct', [$product->id, $product->slug]) }}">See
                       More</a></div>
                 </div>
