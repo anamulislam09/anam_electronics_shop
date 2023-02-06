@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ShippingInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,6 +35,8 @@ class ClientController extends Controller
         return view('user_temp.addtocart', compact('cart_items'));
     }
 
+
+
     public function AddProductToCart(Request $request)
     {
         $product_price = $request->price;
@@ -51,11 +54,44 @@ class ClientController extends Controller
         // echo 'hello';
     }
 
+    public function RemoveCartItem($id)
+    {
+        Cart::findOrFail($id)->delete();
+        return redirect()->route('addtocart')->with('msg', 'Your item removed form cart Successfully');
+    }
+
 
     public function Checkout()
     {
-        return view('user_temp.checkout');
+
+        $userid = Auth::id();
+        // echo "$userid";
+        $cart_item = Cart::where('user_id', $userid)->get();
+        // echo "$cart_item";
+        $shipping_address = ShippingInfo::where('user_id', $userid)->get();
+        // echo "$shipping_address";
+        return view('user_temp.checkout', compact('cart_item', 'shipping_address'));
     }
+
+
+    public function GetShippingAddress()
+    {
+        // echo "hello";
+        return view('user_temp.shipping_address');
+    }
+
+    public function addshippingaddress(Request $request)
+    {
+        ShippingInfo::insert([
+            'user_id' => Auth::id(),
+            'phone_number' => $request->phone_number,
+            'address' => $request->address,
+            'postal_code' => $request->postal_code,
+        ]);
+        return redirect()->route('checkout');
+        // echo 'hello';
+    }
+
     public function UserProfile()
     {
         return view('user_temp.userprofile');

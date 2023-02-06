@@ -7,6 +7,7 @@
       {{ session()->get('msg') }}
     </div>
     @endif
+    <hr>
   </div>
 
   <div class="row">
@@ -21,6 +22,9 @@
               <th>Product Price</th>
               <th>Action</th>
             </tr>
+            @php
+              $total = 0;
+            @endphp
             @foreach ($cart_items as $item)
               <tr>
                 @php
@@ -31,9 +35,21 @@
                 <td><img style="width:100px" src="{{ asset($product_img) }}" alt=""></td>
                 <td>{{ $item->quantity }}</td>
                 <td>{{ $item->price }}</td>
-                <td>remove</td>
+                <td><a class="btn btn-warning" href="{{ route('removeitem', $item->id) }}">remove</a></td>
               </tr>
+              @php
+                $total = $total + $item->price;
+              @endphp
             @endforeach
+            @if ($total != 0)
+              <tr>
+                <td></td>
+                <td></td>
+                <td><b>Total Price</b></td>
+                <td><b>{{ $total }} </b></td>
+                <td><a href="{{ route('shippingaddress') }}" class="btn btn-primary">Checkout</a></td>
+              </tr>
+            @endif
           </table>
         </div>
       </div>
