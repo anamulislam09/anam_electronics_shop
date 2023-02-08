@@ -44,6 +44,13 @@
   <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
   <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
   <script src="{{ asset('dashboard/assets/js/config.js') }}"></script>
+
+  <style>
+    .margin {
+      margin: 0px !important;
+      padding: 0px 10px !important;
+    }
+  </style>
 </head>
 
 <body>
@@ -53,115 +60,117 @@
       <!-- Menu -->
 
       <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-        <div class="app-brand demo">
-          <a href="index.html" class="app-brand-link">
+        <div class="sidebar">
+          <div class="app-brand demo">
+            <a href="index.html" class="app-brand-link">
 
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">Anam Shop</span>
-          </a>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">Anam Shop</span>
+            </a>
 
-          <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-            <i class="bx bx-chevron-left bx-sm align-middle"></i>
-          </a>
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+              <i class="bx bx-chevron-left bx-sm align-middle"></i>
+            </a>
+          </div>
+
+          <div class="menu-inner-shadow"></div>
+
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item margin active">
+              <a href="{{ route('admindashboard') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Dashboard</div>
+              </a>
+            </li>
+
+
+
+            <li class="menu-header margin small text-uppercase">
+              <span class="menu-header-text">Category</span>
+            </li>
+            <li class="menu-item ">
+              <a href="{{ route('allcategory') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">All Category</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="{{ route('addcategory') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Add Category</div>
+              </a>
+            </li>
+
+            {{-- SubCategory --}}
+            <li class="menu-header margin small text-uppercase">
+              <span class="menu-header-text">SubCategory</span>
+            </li>
+            <li class="menu-item ">
+              <a href="{{ route('allsubcategory') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">All SubCategory</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="{{ route('addsubcategory') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Add SubCategory</div>
+              </a>
+            </li>
+
+            <!-- Products -->
+            <li class="menu-header small text-uppercase margin"><span class="menu-header-text">Products</span></li>
+            <li class="menu-item ">
+              <a href="{{ route('allproducts') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics"> All Product</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="{{ route('addproduct') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Add Product</div>
+              </a>
+            </li>
+            <!-- Orders -->
+            <li class="menu-header small text-uppercase margin"><span class="menu-header-text">Orders</span></li>
+            <li class="menu-item ">
+              <a href="{{ route('pendingorder') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics"> Pending Orders</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="{{ route('admindashboard') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Complete Orders</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="{{ route('admindashboard') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Cancel Orders</div>
+              </a>
+            </li>
+            <!-- User interface -->
+
+
+            <!-- Extended components -->
+
+
+
+
+            <!-- Forms & Tables -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>
+            <!-- Forms -->
+
+            <!-- Tables -->
+
+            <!-- Misc -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
+
+          </ul>
         </div>
-
-        <div class="menu-inner-shadow"></div>
-
-        <ul class="menu-inner py-1">
-          <!-- Dashboard -->
-          <li class="menu-item active">
-            <a href="{{ route('admindashboard') }}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Analytics">Dashboard</div>
-            </a>
-          </li>
-
-
-
-          <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Category</span>
-          </li>
-          <li class="menu-item ">
-            <a href="{{ route('allcategory') }}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Analytics">All Category</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('addcategory') }}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Analytics">Add Category</div>
-            </a>
-          </li>
-
-          {{-- SubCategory --}}
-          <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">SubCategory</span>
-          </li>
-          <li class="menu-item ">
-            <a href="{{ route('allsubcategory') }}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Analytics">All SubCategory</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('addsubcategory') }}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Analytics">Add SubCategory</div>
-            </a>
-          </li>
-
-          <!-- Products -->
-          <li class="menu-header small text-uppercase"><span class="menu-header-text">Products</span></li>
-          <li class="menu-item ">
-            <a href="{{ route('allproducts') }}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Analytics"> All Product</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('addproduct') }}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Analytics">Add Product</div>
-            </a>
-          </li>
-          <!-- Orders -->
-          <li class="menu-header small text-uppercase"><span class="menu-header-text">Orders</span></li>
-          <li class="menu-item ">
-            <a href="{{ route('pendingorder') }}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Analytics"> Pending Orders</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admindashboard') }}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Analytics">Complete Orders</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admindashboard') }}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Analytics">Cancel Orders</div>
-            </a>
-          </li>
-          <!-- User interface -->
-
-
-          <!-- Extended components -->
-
-
-
-
-          <!-- Forms & Tables -->
-          <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>
-          <!-- Forms -->
-
-          <!-- Tables -->
-
-          <!-- Misc -->
-          <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
-
-        </ul>
       </aside>
       <!-- / Menu -->
 

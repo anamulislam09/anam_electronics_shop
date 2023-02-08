@@ -5,8 +5,10 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\ShippingInfo;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -73,6 +75,33 @@ class ClientController extends Controller
         return view('user_temp.checkout', compact('cart_item', 'shipping_address'));
     }
 
+    public function PlaceOrder()
+    {
+        $userid = Auth::id();
+        $user_name = User::where('id', $userid)->value('name');
+        $shipping_address = ShippingInfo::where('user_id', $userid)->first();
+        $cart_item = Cart::where('user_id', $userid)->get();
+
+        foreach ($cart_item as $item) {
+            Order::insert([
+                'user_id' => $userid,
+                'user_name' => $user_name,
+                'shipping_phoneNumber' => $shipping_address->phone_number,
+                'shipping_address' => $shipping_address->address,
+                'shipping_postalcode' => $shipping_address->postal_code,
+                'product_id' => $item->product_id,
+                'quantity' => $item->quantity,
+                'total_price' => $item->price,
+            ]);
+
+            $id = $item->id;
+            Cart::findOrFail($id)->delete();
+        }
+        ShippingInfo::where('user_id', $userid)->first()->delete();
+
+        return redirect()->route('pendingorders')->with('msg', 'your order has been placed successfully');
+    }
+
 
     public function GetShippingAddress()
     {
@@ -111,7 +140,9 @@ class ClientController extends Controller
 
     public function PendingOrders()
     {
-        return view('user_temp.pendingorders');
+        $pending_orders = Order::where('status', 'pending')->latest()->get();
+
+        return view('user_temp.pendingorders', compact('pending_orders'));
     }
     public function UserHistory()
     {
