@@ -125,9 +125,9 @@ class ClientController extends Controller
     {
         return view('user_temp.userprofile');
     }
-    public function NewRelease()
+    public function FutureCollection()
     {
-        return view('user_temp.newrelease');
+        return view('user_temp.future-collection');
     }
     public function TodaysDeal()
     {

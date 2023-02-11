@@ -56,11 +56,62 @@
           <div class="col-sm-12">
             <div class="footer_menu">
               <ul>
-                <li><a href="#">Best Sellers</a></li>
-                <li><a href="">Gift Ideas</a></li>
-                <li><a href="{{ route('newrelease') }}">New Releases</a></li>
-                <li><a href="{{ route('todaysdeal') }}">Today's Deals</a></li>
-                <li><a href="{{ route('customerservice') }}">Customer Service</a></li>
+                <li><a href="{{ '/' }}">Home</a></li>
+                <li><a href="{{ route('shope') }}">Shope</a></li>
+                <li><a href="{{ route('future-collection') }}">Future Collection</a></li>
+                <li><a href="{{ route('todaysdeal') }}">Blog</a></li>
+                <li><a href="{{ route('customerservice') }}"> Contact</a></li>
+              </ul>
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- Place this tag where you want the button to render. -->
+
+
+
+
+                <!-- User -->
+                {{-- <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                    </div>
+                  </a>
+                 
+                  <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <x-dropdown-link :href="route('logout')"
+                      onclick="event.preventDefault();
+                       this.closest('form').submit();">
+                      {{ __('Log Out') }}
+                    </x-dropdown-link>
+                  </form>
+                </li> --}}
+
+                @if (Route::has('login'))
+                  <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                    @auth
+                      <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-dropdown-link :href="route('logout')"
+                          onclick="event.preventDefault();
+                         this.closest('form').submit()">
+                          {{ __('Log Out') }}
+                        </x-dropdown-link>
+                      </form>
+                    @else
+                      <a class="text-white" href="{{ route('login') }}"
+                        class="text-sm text-gray-700 dark:text-gray-500 underline">Log
+                        in</a>
+
+                      @if (Route::has('register'))
+                        <a class="text-white" href="{{ route('register') }}"
+                          class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                      @endif
+                    @endauth
+                  </div>
+                @endif
+                <!--/ User -->
               </ul>
             </div>
           </div>
@@ -85,11 +136,17 @@
         <div class="containt_main">
           <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="index.html">Home</a>
+            <ul>
+              <li><a href="{{ '/' }}">Home</a></li>
+              <li><a href="{{ route('shope') }}">Shope</a></li>
+              <li><a href="{{ route('future-collection') }}">Future Collection</a></li>
+              <li><a href="{{ route('todaysdeal') }}">Blog</a></li>
+              <li><a href="{{ route('customerservice') }}"> Contact</a></li>
+            </ul>
 
-            @foreach ($categorys as $category)
+            {{-- @foreach ($categorys as $category)
               <a href="{{ route('category', [$category->id, $category->slug]) }}">{{ $category->category_name }}</a>
-            @endforeach
+            @endforeach --}}
 
           </div>
           <span class="toggle_icon" onclick="openNav()"><img src="{{ asset('/home/images/toggle-icon.png') }}"></span>
@@ -130,18 +187,7 @@
                 </a>
               </div>
             </div>
-            <div class="login_menu">
-              <ul>
-                <li><a href="#">
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    <span class="padding_10">Cart</span></a>
-                </li>
-                <li><a href="#">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    <span class="padding_10">Cart</span></a>
-                </li>
-              </ul>
-            </div>
+
           </div>
         </div>
       </div>
@@ -207,7 +253,7 @@
         <ul>
           <li><a href="#">Best Sellers</a></li>
           <li><a href="">Gift Ideas</a></li>
-          <li><a href="{{ route('newrelease') }}">New Releases</a></li>
+          <li><a href="{{ route('future-collection') }}">uture Collection</a></li>
           <li><a href="{{ route('todaysdeal') }}">Today's Deals</a></li>
           <li><a href="{{ route('customerservice') }}">Customer Service</a></li>
         </ul>

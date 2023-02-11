@@ -28,12 +28,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'Index')->name('Home');
+    Route::get('/shope', 'Shope')->name('shope');
 });
 
 Route::controller(ClientController::class)->group(function () {
     Route::get('/category/{id}/{slug}', 'CategoryPage')->name('category');
     Route::get('/product-details/{id}/{slug}', 'SingleProduct')->name('singleproduct');
-    Route::get('/new-release', 'NewRelease')->name('newrelease');
+    Route::get('/future-collection', 'FutureCollection')->name('future-collection');
 });
 
 Route::middleware(['auth', 'role:user'])->group(function () {
@@ -41,6 +42,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::controller(ClientController::class)->group(function () {
         Route::get('/add-to-cart', 'AddToCart')->name('addtocart');
         Route::post('/addproduct-to-cart', 'AddProductToCart')->name('addproducttocart');
+        Route::post('/shop', 'AddProductToCart')->name('addproducttocart');
         Route::get('/checkout', 'Checkout')->name('checkout');
         Route::post('/add-shipping-address', 'AddShippingAddress')->name('addshippingaddress');
         Route::post('/place-order', 'PlaceOrder')->name('placeorder');
