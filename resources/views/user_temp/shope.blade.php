@@ -10,7 +10,7 @@
           <div class="fashion_section_2">
             <div class="row">
               @php
-                $products = App\Models\Product::where('product_category_name', 'Electronics')->get();
+                $products = App\Models\Product::get();
               @endphp
               @foreach ($products as $product)
                 <div class="col-lg-4 col-sm-4">

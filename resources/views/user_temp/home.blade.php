@@ -10,7 +10,8 @@
           <div class="row">
 
             @php
-              $products = App\Models\Product::where('product_category_name', 'Electronics')->get();
+              $products = App\Models\Product::where('product_category_name', 'Man & Woman Fashion')->get();
+              
             @endphp
             @foreach ($products as $product)
               <div class="col-lg-4 col-sm-4">
@@ -40,12 +41,7 @@
 
 
 
-    <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
-      <i class="fa fa-angle-left"></i>
-    </a>
-    <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
-      <i class="fa fa-angle-right"></i>
-    </a>
+
   </div>
   </div>
   <!-- fashion section end -->
@@ -90,12 +86,7 @@
         </div>
 
       </div>
-      <a class="carousel-control-prev" href="#electronic_main_slider" role="button" data-slide="prev">
-        <i class="fa fa-angle-left"></i>
-      </a>
-      <a class="carousel-control-next" href="#electronic_main_slider" role="button" data-slide="next">
-        <i class="fa fa-angle-right"></i>
-      </a>
+
     </div>
   </div>
   <!-- electronic section end -->
@@ -140,12 +131,7 @@
         </div>
 
       </div>
-      <a class="carousel-control-prev" href="#electronic_main_slider" role="button" data-slide="prev">
-        <i class="fa fa-angle-left"></i>
-      </a>
-      <a class="carousel-control-next" href="#electronic_main_slider" role="button" data-slide="next">
-        <i class="fa fa-angle-right"></i>
-      </a>
+
     </div>
   </div>
 @endsection

@@ -68,6 +68,7 @@
             @endforeach
           </tbody>
         </table>
+        {!! $orders->withQueryString()->links('pagination::bootstrap-5') !!}
       </div>
     </div>
     <!-- Bootstrap Table with Header - Light -->

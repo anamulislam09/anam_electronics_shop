@@ -12,7 +12,7 @@ class OrderController extends Controller
 {
     public function Index()
     {
-        $orders = Order::where('status', 'pending')->latest()->get();
+        $orders = Order::where('status', 'pending')->latest()->paginate(5);
         return view('admin.pendingorders', compact('orders'));
     }
 }

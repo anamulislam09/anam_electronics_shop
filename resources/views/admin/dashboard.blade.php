@@ -6,19 +6,31 @@
 
 @section('content')
   <div class="container ">
-    <div class="box_main">
-      <h4 class="shirt_text mt-5 p-5">hello from dashboard</h4>
+    <div class="row">
+      <div class="col-lg-4 box_main">
+        <h4 class="shirt_text section">Total Products: 500</h4>
+      </div>
+
+      <div class="col-lg-4 box_main">
+        <h4 class="shirt_text section">Total Users: 50</h4>
+      </div>
+
+      <div class="col-lg-4 box_main">
+        <h4 class="shirt_text section">Total Orders: 40</h4>
+      </div>
+
+
+      {{-- <div class="box_main"> --}}
+      {{-- @php
+          $categories = App\Models\Category::Count('product_count')->get();
+        @endphp --}}
+      {{-- @foreach ($Categorys as $Categori) --}}
+      {{-- <h1 class="fashion_taital">Total Product {{ $categories }}</h1> --}}
+      {{-- @endforeach --}}
 
 
 
-    </div>
-
-    @php
-      $products = App\Models\Product::where('product_category_name', 'Electronics')->get();
-    @endphp
-
-    <div class="box_main">
-      <h1 class="fashion_taital">{{ $category->category_name }}-({{ $category->product_count }})</h1>
+      {{-- </div> --}}
     </div>
   </div>
   </div>

@@ -62,30 +62,34 @@
                 <li><a href="{{ route('todaysdeal') }}">Blog</a></li>
                 <li><a href="{{ route('customerservice') }}"> Contact</a></li>
               </ul>
-              <ul class="navbar-nav flex-row align-items-center ms-auto">
-                <!-- Place this tag where you want the button to render. -->
+              <ul class="float-right mr-5">
+                @if (Route::has('login'))
+                  <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                    @auth
+                      <form method="POST" action="{{ route('logout') }}">
+                        @csrf
 
+                        <x-dropdown-link :href="route('logout')"
+                          onclick="event.preventDefault()
+                         this.closest('form').submit()">
+                          <span class="text-white">{{ __('Log Out') }}</span>
+                        </x-dropdown-link>
+                      </form>
+                    @else
+                      <a class="text-white" href="{{ route('login') }}"
+                        class="text-sm text-gray-700 dark:text-gray-500 underline">Log
+                        in</a>/
 
-
-
-                <!-- User -->
-                {{-- <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                      <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
-                    </div>
-                  </a>
-                 
-                  <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-dropdown-link :href="route('logout')"
-                      onclick="event.preventDefault();
-                       this.closest('form').submit();">
-                      {{ __('Log Out') }}
-                    </x-dropdown-link>
-                  </form>
-                </li> --}}
+                      @if (Route::has('register'))
+                        <a class="text-white" href="{{ route('register') }}"
+                          class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                      @endif
+                    @endauth
+                  </div>
+                @endif
+              </ul>
+              {{-- <ul class="">
+              
 
                 @if (Route::has('login'))
                   <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
@@ -102,7 +106,7 @@
                     @else
                       <a class="text-white" href="{{ route('login') }}"
                         class="text-sm text-gray-700 dark:text-gray-500 underline">Log
-                        in</a>
+                        in</a>/
 
                       @if (Route::has('register'))
                         <a class="text-white" href="{{ route('register') }}"
@@ -112,7 +116,7 @@
                   </div>
                 @endif
                 <!--/ User -->
-              </ul>
+              </ul> --}}
             </div>
           </div>
         </div>

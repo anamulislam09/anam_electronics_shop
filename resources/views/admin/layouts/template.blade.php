@@ -50,6 +50,20 @@
       margin: 0px !important;
       padding: 0px 10px !important;
     }
+
+    h4.shirt_text.section {
+      padding: 60px 0px;
+      text-align: center;
+      background: #406ec1;
+      margin-top: 40px;
+      color: white;
+      border-radius: 8px;
+      transition: .3s
+    }
+
+    h4.shirt_text.section:hover {
+      background: #295dbd;
+    }
   </style>
 </head>
 
